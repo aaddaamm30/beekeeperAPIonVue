@@ -65,33 +65,35 @@ export default {
 
       get_output: '',
       put_output: '',
-      post_output: ''
+      post_output: '',
+
+      token: '',
+      tenant_domain: 'looinc.us',
+      headers: {
+        'Accept': 'application/json',
+        'Content-type': 'application/json',
+        'Authorization': 'Token ffc9906f-a83b-4e63-a7b4-af641881bece'
+      }
     }
   },
   mounted () {
   },
   computed: {
     url_get: function () {
-      return 'https://cse-2019.us.beekeeper.io/api/2/' + this.get_rest;
+      return 'https://' + this.tenant_domain + '.beekeeper.io/api/2/' + this.get_rest;
     },
     url_put: function () {
-      return 'https://cse-2019.us.beekeeper.io/api/2/' + this.put_rest;
+      return 'https://' + this.tenant_domain + '.beekeeper.io/api/2/' + this.put_rest;
     },
     url_post: function () {
-      return 'https://cse-2019.us.beekeeper.io/api/2/' + this.post_rest;
+      return 'https://' + this.tenant_domain + '.beekeeper.io/api/2/' + this.post_rest;
     }
   },
   methods: {
     api_GET_using_fetch: async function (url) {
       fetch(url, {
         method: 'GET',
-        mode: 'no-cors',
-        headers: {
-          'Accept': 'application/json',
-          'Content-type': 'application/json',
-          'Authorization': 'Token ffc9906f-a83b-4e63-a7b4-af641881bece',
-          'Access-Control-Allow-Origin': '*'
-        }
+        headers: this.headers
       }).then(response => {
         console.log('response text -> ', response);
         console.log(response.json());
@@ -120,13 +122,7 @@ export default {
     api_PUT_using_fetch: function (url) {
       fetch(url, {
         method: 'PUT',
-        mode: 'no-cors',
-        headers: {
-          'Access-Control-Allow-Origin': '*',
-          'Accept': 'application/json',
-          'Content-Type': 'application/json',
-          'Authorization': 'Token ffc9906f-a83b-4e63-a7b4-af641881bece'
-        }
+        headers: this.headers
       }).then(response => {
         console.log('response text -> ', response);
         console.log(response.json());
@@ -140,13 +136,7 @@ export default {
     api_POST_using_fetch: function (url) {
       fetch(url, {
         method: 'POST',
-        mode: 'no-cors',
-        headers: {
-          'Access-Control-Allow-Origin': '*',
-          'Accept': 'application/json',
-          'Content-Type': 'application/json',
-          'Authorization': 'Token ffc9906f-a83b-4e63-a7b4-af641881bece'
-        }
+        headers: this.headers
       }).then(response => {
         console.log('response text -> ', response);
         return response.text();
