@@ -68,7 +68,7 @@ export default {
       post_output: '',
 
       token: '',
-      tenant_domain: 'looinc.us',
+      tenant_domain: '',
       headers: {
         'Accept': 'application/json',
         'Content-type': 'application/json',
