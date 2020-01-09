@@ -72,7 +72,7 @@ export default {
       headers: {
         'Accept': 'application/json',
         'Content-type': 'application/json',
-        'Authorization': 'Token ffc9906f-a83b-4e63-a7b4-af641881bece'
+        'Authorization': ''
       }
     }
   },
